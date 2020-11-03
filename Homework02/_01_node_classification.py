@@ -36,6 +36,10 @@ def _11_node_classification():
         for node in nodes:
             g.nodes[node]["Pr"] = sum([g.nodes[node]["Pr"] for node in g[node]]) / len(g[node])
 
+    # classification
+    for node in g.nodes():
+        g.nodes[node]["Class"] = "+" if g.nodes[node]["Pr"] > 0.5 else "-"
+
     return  g
 
 
